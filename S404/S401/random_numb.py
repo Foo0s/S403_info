@@ -12,25 +12,29 @@ class RandomWalk():
         self.x_values = [0]
         self.y_values = [0]
 
+    def get_walk(self):
+        '''Расчет значений.'''
+
+        # Определение направления и длины перемещения.
+        self.x_direction = choice([1, -1, 0])  # движения вправо-влево.
+        self.x_distance = choice([0, 1, 2, 3, 4, 5, 6, 7, 8, 12])  # дальность перемещения в этом направлении.
+
+        self.y_direction = choice([1, -1, 0])
+        self.y_distance = choice([0, 1, 2, 3, 4])
+
     def fill_walk(self):
         '''Вычисляет все блуждания.'''
 
         # Шаги генерируются до достижения нужной длины.
         while len(self.x_values) < self.number_points:
+            self.get_walk()
 
-            # Определение направления и длины перемещения.
-            x_direction = choice([1, -1]) # движения вправо-влево.
-            x_distance = choice([0, 1, 2, 3, 4]) # дальность перемещения в этом направлении.
-            x_step = x_direction * x_distance
-
-            y_direction = choice([1, -1])
-            y_distance = choice([0, 1, 2, 3, 4])
-            y_step = y_direction * y_distance
+            x_step = self.y_direction * self.y_distance
+            y_step = self.x_direction * self.x_distance
 
             # Отклонение нулевых перемещений.
             if x_step == 0 and y_step == 0:
                 continue
-
 
             # Вычисление вследующих выражений x - y.
             x = self.x_values[-1] + x_step

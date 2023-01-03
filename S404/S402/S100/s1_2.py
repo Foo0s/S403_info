@@ -4,18 +4,17 @@ from plotly.graph_objs import Bar, Layout
 from plotly import offline
 
 # Создание экземпляров кубика.
-cub_1 = Die(6)
-cub_2 = Die(6)
-cub_3 = Die(6)
+cub_1 = Die()
+cub_2 = Die()
 
 # Моделирование бросков.
 list_1 = []
 for i in range(1000):
-    result = cub_1.roll() + cub_2.roll() + cub_3.roll()
+    result = cub_1.roll() * cub_2.roll()
     list_1.append(result)
 
 itog = []
-max_numbers = cub_1.cub + cub_2.cub + cub_3.cub
+max_numbers = cub_1.cub + cub_2.cub
 for i in range(2, max_numbers + 1):
     value_number = list_1.count(i)
     itog.append(value_number)

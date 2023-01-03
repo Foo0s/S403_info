@@ -19,7 +19,7 @@ while True:
     fig, ax = plt.subplots(figsize=(15, 9), dpi=128)
     point_numbers = range(rw.number_points)
     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, cmap=plt.cm.Oranges,
-               edgecolors="none", s=2.7)      # edgecolors -> удаление черного контура.
+               edgecolors="none", s=4.7)      # edgecolors -> удаление черного контура.
 
     # // Вывод первой точки.
     ax.scatter(rw.x_values[0], rw.y_values[0], c='blue', edgecolors="green", s=101)

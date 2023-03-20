@@ -29,8 +29,8 @@ class RandomWalk():
         while len(self.x_values) < self.number_points:
             self.get_walk()
 
-            x_step = self.y_direction * self.y_distance
-            y_step = self.x_direction * self.x_distance
+            x_step = self.x_direction * self.x_distance
+            y_step = self.y_direction * self.y_distance
 
             # Отклонение нулевых перемещений.
             if x_step == 0 and y_step == 0:

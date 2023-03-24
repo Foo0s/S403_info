@@ -17,16 +17,15 @@ print(f"Всего репозиториев: {answer_serv['total_count']}")
 
 #Анализ информации о репозиториях.
 rep_dicts = answer_serv["items"]
-print(f"Возвращенные репозитории: {len(rep_dicts)}")
 
-#Анализ первого репозитория.
-repo_dicts = rep_dicts[0]
-print(f"Ключи: {len(repo_dicts)}")
-print(f"Название репозитория: {repo_dicts['full_name']}")
-print(f"Владелец репозитория: {repo_dicts['owner']['login']}")
-print(f"Количество звезд, оценок репозитория: "
-      f"{repo_dicts['stargazers_count']}")
-print(f"Сам репозиторий: {repo_dicts['html_url']}")
-print(f"Создано: {repo_dicts['created_at'][:10]}")
-print(f"Обновлено: {repo_dicts['updated_at'][:10]}")
-print(f"Описание репозитория: {repo_dicts['description']}")
+print("Общая информация о репозитории: ")
+for rep in rep_dicts:
+    print(f"Ключи: {len(rep)}")
+    print(f"Название репозитория: {rep['full_name']}")
+    print(f"Владелец репозитория: {rep['owner']['login']}")
+    print(f"Количество звезд, оценок репозитория: "
+          f"{rep['stargazers_count']}")
+    print(f"Сам репозиторий: {rep['html_url']}")
+    print(f"Создано: {rep['created_at'][:10]}")
+    print(f"Обновлено: {rep['updated_at'][:10]}")
+    print(f"Описание репозитория: {rep['description']}")

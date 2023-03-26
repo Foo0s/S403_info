@@ -20,16 +20,20 @@ with open("apigithub.json", "w", encoding="UTF-8") as f:
 #Общее количество найденных репозиториев с использованием ЯП Python.
 all_repositories = file["total_count"]
 #Имя репозитория, кол-во звёзд, участников.
-name_repositories, all_stars_rep, = [], []
+all_stars_rep, labess, rep_links = [], [], []
 for rep in file["items"]:
-    name_repositories.append(rep["name"])
+    name = rep["name"]
+    url = rep["html_url"]
+    rep_links.append(f"<a href='{url}'>{name}</a>")
     all_stars_rep.append(rep["stargazers_count"])
+    labess.append(f"{rep['owner']['login']}<br />{rep['description']}")
 
 #Построение графиков. Визуализация.
 data = [{
     "type": "bar",
-    "x": name_repositories,
+    "x": rep_links,
     "y": all_stars_rep,
+    "hovertext": labess,
     "marker": {
         "color": "rgb(200, 70, 0)",
         "line": {"width": 2.5, "color": "rgb(90, 140, 120)"}
@@ -47,4 +51,3 @@ fig = {"data": data, "layout": my_layout}
 
 #Прогрузка. Визуализация.
 offline.plot(fig, filename="github_analitics.html")
-print(name_repositories)

@@ -20,14 +20,15 @@ def analitics(dt):
         name_rep.append(f"Название: {k['name']}<br />ID: {k['id']}<br />Ссылка: {k['url']}")
         stars.append(k['stargazers_count'])
         size.append(k['size'])
-    return name_rep, stars, size
+        url.append(f"<a href='{k['url']}'>{k['name']}</a>")
+    return name_rep, stars, size, url
 
 
-def visualisation(name, st, size):
+def visualisation(name, st, size, ur):
     data = [{
         "type": "bar",
-        "x": st,
-        "y": size,
+        "x": ur,
+        "y": st,
         "hovertext": name,
         "marker": {
             "color": "rgb(180, 70, 0)",
@@ -37,14 +38,14 @@ def visualisation(name, st, size):
     }]
 
     my_layout = {"title": "Самые популярные репозитории на ЯП Java",
-                 "titlefont": {"size": 30},
+                 "titlefont": {"size": 30, "color": "rgb(123, 50, 23)"},
                  "xaxis": {"title": "Stars",
-                           "titlefont": {"size": 22},
-                           "tickfont": {"size": 18}
+                           "titlefont": {"size": 22, "color": "rgb(220, 50, 0)"},
+                           "tickfont": {"size": 18, "color": "yellow"}
                            },
                  "yaxis": {"title": "Размер",
-                           "titlefont": {"size": 22},
-                           "tickfont": {"size": 18}
+                           "titlefont": {"size": 22, "color": "rgb(130, 50, 21)"},
+                           "tickfont": {"size": 18, "color": "orange"}
                            }
                  }
 
@@ -53,5 +54,5 @@ def visualisation(name, st, size):
 
 
 if __name__ == "__main__":
-    a, b, c = analitics(save_data())
-    visualisation(a, b, c)
+    a, b, c, d = analitics(save_data())
+    visualisation(a, b, c, d)
